@@ -3,6 +3,7 @@
 // The purpose of the loop is to generate the HTML code required to make the shopping list visible for the user
 const container = document.querySelector('.container');
 const list = document.createElement('ul');
+const tempList = document.createElement('span');
 
 container.append(list);
 
@@ -17,10 +18,20 @@ add.addEventListener('click',
 function() {
   const toBuy = document.getElementById('item').value;
   shoppingList.push(toBuy);
+  container.append(tempList);
+  if (shoppingList.length === 1) {
+    tempList.append(`${toBuy}`);
+  } else {
+    tempList.append(`, ${toBuy}`);
+  }
 })
 
 end.addEventListener('click',
 function() {
+
+  // To display the final shopping list, we can remove the temporary one
+  tempList.remove();
+
   // Creation of an index variable to use as a condition for our loop
   let i = 0;
 
