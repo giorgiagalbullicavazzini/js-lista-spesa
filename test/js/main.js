@@ -3,7 +3,7 @@
 // The purpose of the loop is to generate the HTML code required to make the shopping list visible for the user
 const container = document.querySelector('.container');
 const list = document.createElement('ul');
-const tempList = document.createElement('span');
+const tempList = document.createElement('div');
 
 container.append(list);
 
@@ -40,5 +40,12 @@ function() {
     const item = `<li>${shoppingList[i]}</li>`;
     list.innerHTML += item;
     i++;
-}
+  }  
+
+  // At the end, we can show a final message to the user
+  const shoppingCart = document.getElementById('shopping-cart');
+  shoppingCart.remove();
+
+  const message = document.querySelector('.message');
+  message.innerHTML = `Ecco la tua lista della spesa!`;
 })
